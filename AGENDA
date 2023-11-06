@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+using namespace std;
+// struct definem tipos de dados que agrupam variaveis de um mesmo tipo, ou seja, ao armazenar dados de uma mesma entidade, isso pode ser feito com uma única variavel
+struct Contato {
+  string nome;
+  string telefone;
+  Contato* prox = nullptr;
+
+  Contato (const string& n, const string& tell) : nome(n), telefone(tell) {}
+};
+
+void inserirContato (Contato*& lista, const string& nome, const string& telefone) {
+   Contato* novo = new Contato(nome, telefone);
+  if (lista == nullptr) {
+    lista = novo;
+    
+  } else {
+    Contato* temp = lista;
+      while (temp->prox != nullptr) {
+          temp = temp->prox;
+      }
+      temp->prox = novo;
+  }
+}
